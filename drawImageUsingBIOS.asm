@@ -33,7 +33,7 @@ continue:
     call setVideoMode
     add sp, 1
 
-    call paintArt
+    call drawImage
 
     jmp $ ; Skok do aktualnej pozycji
 eof_n:
@@ -101,17 +101,18 @@ writePixel: ; writePixel (x, y, kolor)
 
     ret
 ;----------------------------------------------------------------------------------------------------
-paintArt:
+drawImage:
     push bp
     mov bp, sp
     push cx
-paintArt_loop:
+    mov cx, 0xFE01 ; Supi liczba
+drawImage_loop:
     push 10
     push cx
     push cx
     call writePixel
-    add sp, 3 ; Niepoprawne, ale daje bardzo fajny efekt wizualny :) Poprawnie powinno byæ add sp, 5
-    loop paintArt_loop
+    add sp, 3 ; Niepoprawne, ale daje bardzo fajny efekt wizualny :) Poprawnie powinno byæ add sp, 5 i wtedy nie u¿ywa³bym bp do zapamiêtania sp
+    loop drawImage_loop
     pop cx
     mov sp, bp
     pop bp
