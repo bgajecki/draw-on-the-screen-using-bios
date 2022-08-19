@@ -1,6 +1,6 @@
 ; Created by Beniamin Gajecki
 ; Kompilacja nasm -f bin nazwa_pliku.asm
-; Testowane za pomocπ emulatora qemu
+; Testowane za pomocƒÖ emulatora qemu
 [bits 16]
 [org 7C00h]
 
@@ -41,24 +41,24 @@ eof_n:
     jmp $ ; Skok do aktualnej pozycji
 ;----------------------------------------------------------------------------------------------------
 printf:
-    push bp ; Poczπtek ramki
+    push bp ; PoczƒÖtek ramki
     mov bp, sp
 
-    push ax ; Zostawiamy wartoúci rejstrÛw na stosie
+    push ax ; Zostawiamy warto≈õci rejstr√≥w na stosie
     push si
 
-    mov si, [bp + 4] ; Od poczπtku bp do[bp + ip] textu
-    mov ah, 0Eh ; Opcja wypisywanie znakÛw dla przerwania 10h
+    mov si, [bp + 4] ; Od poczƒÖtku bp do[bp + ip] textu
+    mov ah, 0Eh ; Opcja wypisywanie znak√≥w dla przerwania 10h
     jmp printf_loop
 printf_loop:
     lodsb
     cmp al, 0x0 ; Sprawdzanie czy koniec tekstu
-    je printf_end ; Jeøeli tak to koniec dzia≥ania funkcji
-    int 10h ; Wywo≥anie przerwania 10h
+    je printf_end ; Je≈ºeli tak to koniec dzia≈Çania funkcji
+    int 10h ; Wywo≈Çanie przerwania 10h
     jmp printf_loop
 printf_end:
 
-    pop si ; Przywracamy stare wartoúci rejstrÛw
+    pop si ; Przywracamy stare warto≈õci rejstr√≥w
     pop ax
 
     mov sp, bp
@@ -111,14 +111,14 @@ drawImage_loop:
     push cx
     push cx
     call writePixel
-    add sp, 3 ; Niepoprawne, ale daje bardzo fajny efekt wizualny :) Poprawnie powinno byÊ add sp, 5 i wtedy nie uøywa≥bym bp do zapamiÍtania sp
+    add sp, 3 ; Niepoprawne, ale daje bardzo fajny efekt wizualny :) Poprawnie powinno byƒá add sp, 5 i wtedy nie u≈ºywa≈Çbym bp do zapamiƒôtania sp
     loop drawImage_loop
     pop cx
     mov sp, bp
     pop bp
     ret
 ;----------------------------------------------------------------------------------------------------
-setVideoMode: ; Ustawianie trybu pracy karty graficznej (po uøyciu czyúci teø ekran).
+setVideoMode: ; Ustawianie trybu pracy karty graficznej (po u≈ºyciu czy≈õci te≈º ekran).
   push bp
   mov bp, sp
 
